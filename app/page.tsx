@@ -53,8 +53,7 @@ export default function Home() {
       <Testimonials />
 
       <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+      Got questions about Briefly? We've got answers! Here are some of the most common questions we receive from our users. If you need more help, feel free to reach out to our support team.
       </SectionTitle>
 
       <Faq />

@@ -36,21 +36,21 @@ export const Faq = () => {
 
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
+    question: "What is Briefly and how does it work?",
+    answer: "Briefly is a platform designed to help professionals capture, organize, and annotate notes and voice recordings. Using Briefly, you can easily record important conversations, add annotations, and share summaries with your team to streamline communication and enhance productivity.",
   },
   {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, this you can.",
+    question: "Can I share my notes and recordings with others?",
+    answer: "Yes, Briefly allows you to share your notes and voice recordings with your team. You can also collaborate in real-time, making it easy to work together and stay aligned on projects.",
   },
   {
-    question: "What is your refund policy? ",
+    question: "Does Briefly offer automatic transcription or summarization?",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "Absolutely! Briefly provides automatic transcription and summarization features. This means you can quickly generate text versions of your voice recordings and get concise summaries of key points, saving you time and effort.",
   },
   {
-    question: "Do you offer technical support? ",
+    question: "Is my data secure on Briefly?",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "We take security very seriously at Briefly. All your notes, recordings, and personal data are encrypted and stored securely. We follow industry best practices to ensure your information is always protected.",
   },
 ];
