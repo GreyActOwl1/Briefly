@@ -12,7 +12,7 @@ export const Hero = () => {
             Streamline feedback, simplify insights.
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-            {"Streamline your transcript management with features for adding, editing, and deleting comments, attaching files, and generating LLM-powered summaries for a clearer, more efficient review process."}
+            {"Streamline your transcript management with features for adding, editing, and deleting comments, attaching files, and generating AI-powered summaries for a clearer, more efficient review process."}
             </p>
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
               <a
