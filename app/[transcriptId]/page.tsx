@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/config/supabaseClient';
+import ReactMarkdown from 'react-markdown';
 
 interface Annotation {
   id: string;
@@ -52,13 +53,13 @@ export default function TranscriptPage({ params }: { params: { transcriptId: str
 
   return (
     <div>
-      <h1>{transcript.title}</h1>
-      <p>{transcript.content}</p>
+      <h1><ReactMarkdown>{transcript.title}</ReactMarkdown></h1>
+      <p><ReactMarkdown>{transcript.content}</ReactMarkdown></p>
 
       <h2>Comments:</h2>
       {transcript.annotations.map((annotation) => (
         <div key={annotation.id}>
-          <p>{annotation.content}</p>
+          <p><ReactMarkdown>{annotation.content}</ReactMarkdown></p>
         </div>
       ))}
     </div>
