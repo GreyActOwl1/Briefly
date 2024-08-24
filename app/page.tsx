@@ -51,7 +51,7 @@ export default function Home() {
         title={"Here's What Our Customers Are Saying"}
       >
         Hear from some of our satisfied customers about how Briefly has made a
-        difference in their daily lives.
+        difference in their daily Flives.
       </SectionTitle>
 
       <Testimonials />

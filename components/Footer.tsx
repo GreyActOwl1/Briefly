@@ -34,7 +34,7 @@ export function Footer() {
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              Briefly is a powerful platform for capturing notes and voice recordings, perfect for professionals who want to streamline communication and enhance productivity.
+              Briefly is a feature made to allow sales managers to add, edit, and delete comments on specific parts of a sales transcript.
             </div>
           </div>
 
@@ -100,7 +100,14 @@ export function Footer() {
         </div>
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
-          Copyright © {new Date().getFullYear()}. All rights reserved.
+          Copyright © {new Date().getFullYear()} {" "}
+          <a href="https://web3templates.com/" target="_blank" rel="noreferrer">
+          
+          </a>{" "}
+          {" "}
+          <a href="https://www.glazestock.com/" target="_blank" rel="noreferrer">
+            
+          </a>
         </div>
       </Container>
     </div>
@@ -144,7 +151,7 @@ const Instagram = ({ size = 24 }) => (
 
 const Linkedin = ({ size = 24 }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="https://linkedin.com/in/naitikoza"
     width={size}
     height={size}
     viewBox="0 0 24 24"
@@ -177,7 +184,7 @@ const Backlink = () => {
         />
       </svg>
 
-      <span>Web3Templates</span>
+      <span>Briefly</span>
     </a>
   );
 };

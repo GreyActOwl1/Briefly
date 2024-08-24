@@ -12,21 +12,21 @@ export const Testimonials = () => {
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal">
-            Briefly has <Mark>streamlined</Mark>our note-taking process and improved team communication significantly. The automatic summaries save us so much time!
+            <p className="text-2xl leading-normal text-black">
+              Briefly has <Mark>streamlined</Mark> our note-taking process and improved team communication significantly. The automatic summaries save us so much time!
             </p>
 
             <Avatar
               image={userOneImg}
               name="Sarah Steiner"
-              title="VP Sales at StellarTech"
+              title="VP at StellarTech"
             />
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal ">
-            The ability to quickly capture and annotate voice recordings has been a <Mark>game-changer</Mark> for our marketing meetings. Briefly keeps everything organized and easy to find.
+            <p className="text-2xl leading-normal text-black">
+              The ability to quickly capture and annotate voice recordings has been a <Mark>game-changer</Mark> for our marketing meetings. Briefly keeps everything organized and easy to find.
             </p>
 
             <Avatar
@@ -38,8 +38,8 @@ export const Testimonials = () => {
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal ">
-            Using Briefly, we&apos;ve been able to <Mark>enhance collaboration</Mark> across departments. It&apos;s intuitive, efficient, and perfect for our needs.
+            <p className="text-2xl leading-normal text-black">
+              Using Briefly, we&apos;ve been able to <Mark>enhance collaboration</Mark> across departments. It&apos;s intuitive, efficient, and perfect for our needs.
             </p>
 
             <Avatar
@@ -73,8 +73,8 @@ function Avatar(props: Readonly<AvatarProps>) {
         />
       </div>
       <div>
-        <div className="text-lg font-medium">{props.name}</div>
-        <div className="text-gray-600 dark:text-gray-400">{props.title}</div>
+        <div className="text-lg font-medium text-black">{props.name}</div>
+        <div className="text-black">{props.title}</div>
       </div>
     </div>
   );
@@ -82,11 +82,11 @@ function Avatar(props: Readonly<AvatarProps>) {
 
 function Mark(props: { readonly children: React.ReactNode }) {
   return (
-    <>
-      {" "}
-      <mark className="text-indigo-800 bg-indigo-100 rounded-md ring-indigo-100 ring-4 dark:ring-indigo-900 dark:bg-indigo-900 dark:text-indigo-200">
-        {props.children}
-      </mark>{" "}
-    </>
+    <mark className="text-indigo-800 bg-indigo-100 rounded-md ring-indigo-100 ring-4 dark:ring-indigo-900 dark:bg-indigo-900 dark:text-indigo-300">
+      {props.children}
+    </mark>
   );
 }
+
+
+
