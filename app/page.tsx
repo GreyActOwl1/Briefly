@@ -32,7 +32,7 @@ export default function Home() {
       <Benefits data={benefitOne} />
       <Benefits imgPos="right" data={benefitTwo} />
 
-      <SectionTitle
+      {/* <SectionTitle
         preTitle="Watch a video"
         title="Learn how to fullfil your needs"
       >
@@ -41,14 +41,13 @@ export default function Home() {
         don&apos;t forget to add one. Just like this.
       </SectionTitle>
 
-      <Video videoId="fZ0D0cnR88E" />
+      <Video videoId="fZ0D0cnR88E" /> */}
 
       <SectionTitle
         preTitle="Testimonials"
-        title="Here's what our customers said"
+        title="Here's What Our Customers Are Saying"
       >
-        Testimonials is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
+        Hear from some of our satisfied customers about how Briefly has made a difference in their daily lives.
       </SectionTitle>
 
       <Testimonials />
