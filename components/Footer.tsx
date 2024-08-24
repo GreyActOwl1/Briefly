@@ -38,7 +38,7 @@ export function Footer() {
               <a
                 href="https://vercel.com/?utm_source=web3templates&utm_campaign=oss"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
                 className="relative block w-44"
               >
                 <Image
@@ -83,7 +83,7 @@ export function Footer() {
               <a
                 href="https://twitter.com/web3templates"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span className="sr-only">Twitter</span>
                 <Twitter />
@@ -91,7 +91,7 @@ export function Footer() {
               <a
                 href="https://facebook.com/web3templates"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span className="sr-only">Facebook</span>
                 <Facebook />
@@ -99,12 +99,12 @@ export function Footer() {
               <a
                 href="https://instagram.com/web3templates"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span className="sr-only">Instagram</span>
                 <Instagram />
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener">
+              <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
                 <span className="sr-only">Linkedin</span>
                 <Linkedin />
               </a>
@@ -114,11 +114,11 @@ export function Footer() {
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
           Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
-          <a href="https://web3templates.com/" target="_blank" rel="noopener">
+          <a href="https://web3templates.com/" target="_blank" rel="noreferrer">
             Web3Templates.
           </a>{" "}
           Illustrations from{" "}
-          <a href="https://www.glazestock.com/" target="_blank" rel="noopener ">
+          <a href="https://www.glazestock.com/" target="_blank" rel="noreferrer">
             Glazestock
           </a>
         </div>
@@ -181,7 +181,7 @@ const Backlink = () => {
     <a
       href="https://web3templates.com"
       target="_blank"
-      rel="noopener"
+      rel="noreferrer"
       className="absolute flex px-3 py-1 space-x-2 text-sm font-semibold text-gray-900 bg-white border border-gray-300 rounded shadow-sm place-items-center left-5 bottom-5 dark:bg-trueGray-900 dark:border-trueGray-700 dark:text-trueGray-300"
     >
       <svg

@@ -12,8 +12,8 @@ export const Testimonials = () => {
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal ">
-            "Briefly has <Mark>streamlined</Mark>our note-taking process and improved team communication significantly. The automatic summaries save us so much time!"
+            <p className="text-2xl leading-normal">
+            Briefly has <Mark>streamlined</Mark>our note-taking process and improved team communication significantly. The automatic summaries save us so much time!
             </p>
 
             <Avatar
@@ -26,7 +26,7 @@ export const Testimonials = () => {
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-            "The ability to quickly capture and annotate voice recordings has been a <Mark>game-changer</Mark> for our marketing meetings. Briefly keeps everything organized and easy to find."
+            The ability to quickly capture and annotate voice recordings has been a <Mark>game-changer</Mark> for our marketing meetings. Briefly keeps everything organized and easy to find.
             </p>
 
             <Avatar
@@ -39,7 +39,7 @@ export const Testimonials = () => {
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-            "Using Briefly, we've been able to <Mark>enhance collaboration</Mark> across departments. It's intuitive, efficient, and perfect for our needs."
+            Using Briefly, we&apos;ve been able to <Mark>enhance collaboration</Mark> across departments. It&apos;s intuitive, efficient, and perfect for our needs.
             </p>
 
             <Avatar

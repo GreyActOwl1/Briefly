@@ -16,17 +16,17 @@ import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/Cta";
 
-import { benefitOne, benefitTwo } from "@/components/data";``
+import { benefitOne, benefitTwo } from "@/components/data";
+``;
 
 export default function Home() {
   return (
     <Container>
       <Hero />
-      <SectionTitle
-        preTitle="Our Benefits"
-        title=" Why Briefly?"
-      >
-        Briefly transforms the way professionals capture and manage their notes and voice recordings. Designed for ease of use and maximum productivity, it simplifies communication, making every interaction count.
+      <SectionTitle preTitle="Our Benefits" title=" Why Briefly?">
+        Briefly transforms the way professionals capture and manage their notes
+        and voice recordings. Designed for ease of use and maximum productivity,
+        it simplifies communication, making every interaction count.
       </SectionTitle>
 
       <Benefits data={benefitOne} />
@@ -45,16 +45,19 @@ export default function Home() {
 
       <SectionTitle
         preTitle="Testimonials"
-        title="Here's What Our Customers Are Saying"
+        title={"Here's What Our Customers Are Saying"}
       >
-        Hear from some of our satisfied customers about how Briefly has made a difference in their daily lives.
+        Hear from some of our satisfied customers about how Briefly has made a
+        difference in their daily lives.
       </SectionTitle>
 
       <Testimonials />
 
       <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-      Got questions about Briefly? We've got answers! Here are some of the most common questions we receive from our users. If you need more help, feel free to reach out to our support team.
-      </SectionTitle>
+        {
+          "Got questions about Briefly? We've got answers! Here are some of the most common questions we receive from our users. If you need more help, feel free to reach out to our support team."
+        }
+      </SectionTitle> 
 
       <Faq />
       <Cta />
