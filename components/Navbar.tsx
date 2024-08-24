@@ -32,7 +32,7 @@ export const Navbar = () => {
                         className="w-8"
                       />
                     </span>
-                    <span>Nextly</span>
+                    <span>Briefly</span>
                   </span>
                 </Link>
 
