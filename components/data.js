@@ -11,46 +11,46 @@ import benefitOneImg from "../public/img/benefit-one.png";
 import benefitTwoImg from "../public/img/benefit-two.png";
 
 const benefitOne = {
-  title: "Highlight your benefits",
-  desc: "You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.",
+  title: "Capture and Organize",
+  desc: "Effortlessly capture and organize your notes and voice recordings with Briefly. Our platform is designed to help you manage information seamlessly, ensuring that nothing important slips through the cracks.",
   image: benefitOneImg,
   bullets: [
     {
-      title: "Understand your customers",
-      desc: "Then explain the first point breifly in one or two lines.",
+      title: "Capture Instantly",
+      desc: "Quickly record notes and voice memos on the go.",
       icon: <FaceSmileIcon />,
     },
     {
-      title: "Improve acquisition",
-      desc: "Here you can add the next benefit point.",
+      title: "Organize Effectively",
+      desc: "Easily categorize and annotate recordings for easy retrieval.",
       icon: <ChartBarSquareIcon />,
     },
     {
-      title: "Drive customer retention",
-      desc: "This will be your last bullet point in this section.",
+      title: "Search and Retrieve",
+      desc: "Find your notes and recordings quickly with powerful search functionality.",
       icon: <CursorArrowRaysIcon />,
     },
   ],
 };
 
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
+  title: "Collaborate and Analyze",
+  desc: "Enhance your team's communication and gain deeper insights from your conversations. Briefly's collaborative features and analysis tools make it easy to share, edit, and understand key information.",
   image: benefitTwoImg,
   bullets: [
     {
-      title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
+      title: "Automatic Summaries",
+      desc: "Get concise summaries of key points from your recordings.",
       icon: <DevicePhoneMobileIcon />,
     },
     {
-      title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
+      title: "Keyword Highlights",
+      desc: "Automatically identify and highlight important keywords and phrases.",
       icon: <AdjustmentsHorizontalIcon />,
     },
     {
-      title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
+      title: "Share Effortlessly",
+      desc: "Share notes and summaries with your team to keep everyone on the same page.",
       icon: <SunIcon />,
     },
   ],
