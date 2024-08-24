@@ -18,7 +18,7 @@ export const Navbar = () => {
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
         {/* Logo  */}
         <Disclosure>
-          {({ open }) => (
+          {({ open }: { open: boolean }) => (
             <>
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
                 <Link href="/">
@@ -100,4 +100,3 @@ export const Navbar = () => {
     </div>
   );
 }
-
