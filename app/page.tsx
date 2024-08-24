@@ -22,7 +22,9 @@ import { benefitOne, benefitTwo } from "@/components/data";
 export default function Home() {
   return (
     <Container>
+      <a name="Product" />
       <Hero />
+      <a name="Features" />
       <SectionTitle preTitle="Our Benefits" title=" Why Briefly?">
         Briefly transforms the way professionals capture and manage their notes
         and voice recordings. Designed for ease of use and maximum productivity,
@@ -43,6 +45,7 @@ export default function Home() {
 
       <Video videoId="fZ0D0cnR88E" /> */}
 
+      <a name="Testimonials" />
       <SectionTitle
         preTitle="Testimonials"
         title={"Here's What Our Customers Are Saying"}
@@ -53,11 +56,12 @@ export default function Home() {
 
       <Testimonials />
 
+      <a name="FAQ" />
       <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
         {
           "Got questions about Briefly? We've got answers! Here are some of the most common questions we receive from our users. If you need more help, feel free to reach out to our support team."
         }
-      </SectionTitle> 
+      </SectionTitle>
 
       <Faq />
       <Cta />
