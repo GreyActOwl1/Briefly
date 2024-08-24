@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/config/supabaseClient";
+import { FaPlus } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 interface Transcript {
   id: string;
@@ -14,8 +16,7 @@ export default function TranscriptsPage() {
   const [transcripts, setTranscripts] = useState<Transcript[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [newTitle, setNewTitle] = useState("");
-  const [newContent, setNewContent] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     fetchTranscripts();
@@ -28,88 +29,34 @@ export default function TranscriptsPage() {
         .select("id, title, created_at")
         .order("created_at", { ascending: false });
 
-      if (error) throw error;
-      setTranscripts(data);
+      console.log(error);
+
+      if (data) {
+        setTranscripts(data as Transcript[]);
+      } else {
+        setTranscripts([]);
+      }
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "An unknown error occurred"
+        err instanceof Error ? err.message : "An unknown error occurred: " + err
       );
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleCreateTranscript = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newTitle.trim() || !newContent.trim()) return;
-
-    try {
-      const { data, error } = await supabase
-        .from("transcripts")
-        .insert([{ title: newTitle, content: newContent }])
-        .select();
-
-      if (error) throw error;
-      setTranscripts((prevTranscripts) => [data[0], ...prevTranscripts]);
-      setNewTitle("");
-      setNewContent("");
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to create transcript"
-      );
-    }
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Transcripts</h1>
-      <div className="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">Create New Transcript</h2>
-        <form onSubmit={handleCreateTranscript} className="space-y-4">
-          <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Title
-            </label>
-            <input
-              id="title"
-              type="text"
-              placeholder="Enter transcript title"
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="content"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Content
-            </label>
-            <textarea
-              id="content"
-              placeholder="Enter transcript content"
-              value={newContent}
-              onChange={(e) => setNewContent(e.target.value)}
-              required
-              rows={4}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Create Transcript
-          </button>
-        </form>
+      <div className='flex flex-row items-center mb-6 space-x-2'>
+        <h1 className="text-3xl font-semibold">Transcripts</h1>
+        <button onClick={
+          () => {
+            router.push('/transcripts/new');
+          }
+        } className='text-blue-600 bg-gray-50 rounded-md p-2 hover:bg-gray-100'>
+          <FaPlus />
+        </button>
       </div>
-
-      <h2 className="text-2xl font-semibold mb-4">All Transcripts</h2>
       {isLoading ? (
         <p>Loading transcripts...</p>
       ) : error ? (
@@ -121,14 +68,18 @@ export default function TranscriptsPage() {
           {transcripts.map((transcript) => (
             <li
               key={transcript.id}
-              className="border p-4 rounded-lg hover:bg-gray-50"
+              className="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer"
+              onClick={
+                () => {
+                  router.push(`/transcripts/${transcript.id}`);
+                }
+              }
             >
-              <Link
-                href={`/transcripts/${transcript.id}`}
-                className="text-blue-600 hover:underline"
+              <div
+                className="text-blue-600"
               >
                 {transcript.title}
-              </Link>
+              </div>
               <p className="text-sm text-gray-500 mt-1">
                 Created: {new Date(transcript.created_at).toLocaleDateString()}
               </p>

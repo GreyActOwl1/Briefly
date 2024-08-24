@@ -1,5 +1,5 @@
 'use client';
-
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/config/supabaseClient';
 import ReactMarkdown from 'react-markdown';
@@ -41,7 +41,7 @@ export default function TranscriptPage({ params }: { params: { transcriptId: str
         if (error) throw error;
         setTranscript(data as Transcript);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+        setError(err instanceof Error ? err.message : 'An unknown error occurred: ' + err);
       } finally {
         setIsLoading(false);
       }
