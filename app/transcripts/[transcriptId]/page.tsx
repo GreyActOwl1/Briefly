@@ -77,7 +77,7 @@ export default function TranscriptPage({ params }: { params: { transcriptId: str
 
       <button
         onClick={handleOpenModal}
-        className="mt-4 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
+        className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded"
       >
         Open Microphone
       </button>

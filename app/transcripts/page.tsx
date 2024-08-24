@@ -64,11 +64,11 @@ export default function TranscriptsPage() {
       ) : transcripts.length === 0 ? (
         <p>No transcripts found.</p>
       ) : (
-        <ul className="space-y-4">
+        <div className="space-y-4 flex flex-col">
           {transcripts.map((transcript) => (
-            <li
+            <button
               key={transcript.id}
-              className="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer"
+              className="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer text-start"
               onClick={
                 () => {
                   router.push(`/transcripts/${transcript.id}`);
@@ -83,9 +83,9 @@ export default function TranscriptsPage() {
               <p className="text-sm text-gray-500 mt-1">
                 Created: {new Date(transcript.created_at).toLocaleDateString()}
               </p>
-            </li>
+            </button>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
