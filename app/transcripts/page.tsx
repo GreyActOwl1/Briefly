@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/config/supabaseClient";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 interface Transcript {
@@ -45,13 +45,31 @@ export default function TranscriptsPage() {
     }
   };
 
+  const deleteTranscript = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from("transcripts")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+
+      // Refresh the transcript list
+      fetchTranscripts();
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "An unknown error occurred: " + err
+      );
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className='flex flex-row items-center mb-6 space-x-2'>
         <h1 className="text-3xl font-semibold">Transcripts</h1>
         <button onClick={
           () => {
-            router.push('/transcripts/new');
+            router.push('/transcripts/create');
           }
         } className='text-blue-600 bg-gray-50 rounded-md p-2 hover:bg-gray-100'>
           <FaPlus />
@@ -68,21 +86,28 @@ export default function TranscriptsPage() {
           {transcripts.map((transcript) => (
             <li
               key={transcript.id}
-              className="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer"
-              onClick={
-                () => {
-                  router.push(`/transcripts/${transcript.id}`);
-                }
-              }
+              className="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer flex justify-between items-center"
             >
               <div
-                className="text-blue-600"
+                onClick={() => {
+                  router.push(`/transcripts/${transcript.id}`);
+                }}
+                className="flex-grow"
               >
-                {transcript.title}
+                <div className="text-blue-600">{transcript.title}</div>
+                <p className="text-sm text-gray-500 mt-1">
+                  Created: {new Date(transcript.created_at).toLocaleDateString()}
+                </p>
               </div>
-              <p className="text-sm text-gray-500 mt-1">
-                Created: {new Date(transcript.created_at).toLocaleDateString()}
-              </p>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteTranscript(transcript.id);
+                }}
+                className="text-gray-400 hover:text-red-600 bg-gray-50 rounded-md p-3 hover:bg-gray-100"
+              >
+                <FaTrash />
+              </button>
             </li>
           ))}
         </ul>
