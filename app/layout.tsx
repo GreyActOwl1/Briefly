@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
+import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
@@ -8,8 +9,10 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { Analytics } from '@vercel/analytics/react';
+
+
+
 
 export const metadata: Metadata = {
   title: {
@@ -29,24 +32,14 @@ export const viewport: Viewport = {
   ],
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
-  const {getUser} = getKindeServerSession();
-   const user = await getUser()
   return (
     <html suppressHydrationWarning lang="en">
-      <head>
-        {/* Google Identity Services script */}
-        <script
-          src="https://accounts.google.com/gsi/client"
-          async
-        ></script>
-
-      </head>
+      <head />
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -55,7 +48,7 @@ export default async function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-            <Navbar user={user}/>
+            <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
               {children}
             </main>
