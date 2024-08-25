@@ -87,6 +87,7 @@ export default function TranscriptPage({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTranscript, setModalTranscript] = useState("");
   const [comments, setComments] = useState("");
+  const [isCommentsEditable, setIsCommentsEditable] = useState(false);
 
   useEffect(() => {
     fetchTranscriptData();
@@ -169,11 +170,13 @@ export default function TranscriptPage({
   };
 
   const handleOpenModal = () => {
+    setModalTranscript(""); // Reset modal transcript
     setIsModalOpen(true);
   };
 
   const handleCloseModal = (transcribedText: string) => {
     setComments((prevComments) => prevComments + "\n" + transcribedText);
+    setIsCommentsEditable(true);
     setIsModalOpen(false);
   };
 
@@ -201,23 +204,31 @@ export default function TranscriptPage({
         type="textarea"
       />
       <h2>Comments:</h2>
-      <textarea
-        className="w-full p-4 border rounded-md"
-        rows={10}
-        value={comments}
-        onChange={(e) => setComments(e.target.value)}
-      />
-      <button
-        onClick={() => upsertAnnotation(comments)}
-        className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded mr-4"
-      >
-        Save Comments
-      </button>
+      {isCommentsEditable ? (
+        <textarea
+          className="w-full p-4 border rounded-md"
+          rows={10}
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
+        />
+      ) : (
+        <ReactMarkdown>
+          {comments}
+        </ReactMarkdown>
+      )}
+      {isCommentsEditable && (
+        <button
+          onClick={() => upsertAnnotation(comments)}
+          className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded mr-4"
+        >
+          Save Comments
+        </button>
+      )}
       <button
         onClick={handleOpenModal}
         className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded"
       >
-        Open Microphone
+        Record comments
       </button>
 
       <MicModal isOpen={isModalOpen} onClose={handleCloseModal} />

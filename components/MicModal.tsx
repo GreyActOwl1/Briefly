@@ -1,16 +1,17 @@
-import { useState } from "react";
-import MicrophoneComponent from "./MicrophoneComponent";
+import React, { useState } from "react";
+import MicrophoneComponent from "@/components/MicrophoneComponent";
 
-interface ModalProps {
+interface MicModalProps {
   isOpen: boolean;
-  onClose: (transcript: string) => void;
+  onClose: (transcribedText: string) => void;
 }
 
-export default function MicModal({ isOpen, onClose }: ModalProps) {
+const MicModal = ({ isOpen, onClose }: MicModalProps) => {
   const [transcript, setTranscript] = useState("");
 
   const handleClose = () => {
     onClose(transcript);
+    setTranscript(""); // Reset transcript state
   };
 
   if (!isOpen) return null;
@@ -28,4 +29,6 @@ export default function MicModal({ isOpen, onClose }: ModalProps) {
       </div>
     </div>
   );
-}
+};
+
+export default MicModal;
