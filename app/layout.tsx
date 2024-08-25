@@ -9,6 +9,8 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Analytics } from '@vercel/analytics/react';
+
 
 
 
@@ -53,6 +55,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
