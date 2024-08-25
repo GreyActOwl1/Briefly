@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
-import Image from "next/image"
+import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
 import { LoginLink, LogoutLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
@@ -12,15 +12,14 @@ export const Navbar =({user}:{user:KindeUser | null}) => {
   const navigation = [
     "Product",
     "Features",
-    "Pricing",
-    "Company",
-    "Blog",
+    "Testimonials",
+    "FAQ",
   ];
 
   return (
-    <div className="w-full">
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
-        {/* Logo  */}
+    <div className="w-full fixed bg-white dark:bg-black">
+      <nav className="container relative flex flex-wrap items-center justify-between p-4 mx-auto lg:justify-between xl:px-0">
+        {/* Logo */}
         <Disclosure>
           {({ open }: { open: boolean }) => (
             <>
@@ -57,7 +56,7 @@ export const Navbar =({user}:{user:KindeUser | null}) => {
                     {!open && (
                       <path
                         fillRule="evenodd"
-                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                       />
                     )}
                   </svg>
@@ -66,10 +65,10 @@ export const Navbar =({user}:{user:KindeUser | null}) => {
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                   <>
                     {navigation.map((item, index) => (
-                      <Link key={index} href="/" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
-                          {item}
+                      <Link key={index} href={`/#${item}`} className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
+                        {item}
                       </Link>
-                    ))}
+                    ))
                    {
                !user ? (<div className='flex gap-x-8'>
                <RegisterLink  className="px-6 py-2 text-white bg-indigo-600 rounded-md">Sign Up</RegisterLink>
@@ -82,20 +81,18 @@ export const Navbar =({user}:{user:KindeUser | null}) => {
             </>
           )}
         </Disclosure>
-
         {/* menu  */}
         <div className="hidden text-center mr-3 lg:flex lg:items-center">
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
-                <Link href="/" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
-                    {menu}
+                <Link href={`/#${menu}`} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                  {menu}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-
         <div className="hidden text-center gap-x-6 lg:flex  ">
         {
                !user ? (<div className='flex gap-x-8'>
@@ -103,7 +100,6 @@ export const Navbar =({user}:{user:KindeUser | null}) => {
                <LoginLink   className="px-4 py-1.5 text-white bg-indigo-600 hover:bg-indigo-500 rounded-md">Log In </LoginLink>
                </div>) : (<LogoutLink   className="px-12 py-2 text-white bg-indigo-600 hover:bg-indigo-500 rounded-md md:ml-5"> Log out</LogoutLink>)
             }
-
           <ThemeChanger />
         </div>
       </nav>

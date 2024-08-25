@@ -9,8 +9,7 @@ import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-
-
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: {
@@ -63,6 +62,7 @@ export default async function RootLayout({
             <Footer />
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
