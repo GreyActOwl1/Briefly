@@ -17,6 +17,7 @@ export default function TranscriptsPage() {
   const [transcripts, setTranscripts] = useState<Transcript[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
 
