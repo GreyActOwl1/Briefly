@@ -1,22 +1,23 @@
-import { useState } from "react";
-import MicrophoneComponent from "./MicrophoneComponent";
+import React, { useState } from "react";
+import MicrophoneComponent from "@/components/MicrophoneComponent";
 
-interface ModalProps {
+interface MicModalProps {
   isOpen: boolean;
-  onClose: (transcript: string) => void;
+  onClose: (transcribedText: string) => void;
 }
 
-export default function Modal({ isOpen, onClose }: ModalProps) {
+const MicModal = ({ isOpen, onClose }: MicModalProps) => {
   const [transcript, setTranscript] = useState("");
 
   const handleClose = () => {
     onClose(transcript);
+    setTranscript(""); // Reset transcript state
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg p-4 w-full max-w-md">
         <MicrophoneComponent setTranscript={setTranscript} />
         <button
@@ -28,4 +29,6 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
       </div>
     </div>
   );
-}
+};
+
+export default MicModal;
