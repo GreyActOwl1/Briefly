@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/config/supabaseClient";
@@ -65,13 +66,15 @@ export default function TranscriptsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className='flex flex-row items-center mb-6 space-x-2'>
+      <div className="flex flex-row items-center mb-6 space-x-2">
         <h1 className="text-3xl font-semibold">Transcripts</h1>
-        <button onClick={
-          () => {
-            router.push('/transcripts/create');
-          }
-        } className='text-blue-600 bg-gray-50 rounded-md p-2 hover:bg-gray-100'>
+        <button
+          onClick={() => {
+            router.push("/transcripts/create");
+          }}
+          className="text-blue-600 bg-gray-50 rounded-md p-2 hover:bg-gray-100"
+          aria-label="Create new transcript"
+        >
           <FaPlus />
         </button>
       </div>
@@ -82,33 +85,34 @@ export default function TranscriptsPage() {
       ) : transcripts.length === 0 ? (
         <p>No transcripts found.</p>
       ) : (
-        <ul className="space-y-4">
+        <ul className="space-y-4" role="list button">
           {transcripts.map((transcript) => (
-            <li
-              key={transcript.id}
-              className="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer flex justify-between items-center"
-            >
-              <div
-                onClick={() => {
-                  router.push(`/transcripts/${transcript.id}`);
-                }}
-                className="flex-grow"
-              >
-                <div className="text-blue-600">{transcript.title}</div>
-                <p className="text-sm text-gray-500 mt-1">
-                  Created: {new Date(transcript.created_at).toLocaleDateString()}
-                </p>
+            <div key={transcript.id} className="space-y-4">
+              <div className="border rounded-lg" role="button">
+                <button
+                  className="w-full text-left p-4 hover:bg-gray-50 flex justify-between items-center"
+                  onClick={() => router.push(`/transcripts/${transcript.id}`)}
+                >
+                  <div className="flex-grow" role="button">
+                    <div className="text-blue-600" >{transcript.title}</div>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Created:{" "}
+                      {new Date(transcript.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteTranscript(transcript.id);
+                    }}
+                    className="text-gray-400 hover:text-red-600 bg-gray-50 rounded-md p-2 hover:bg-gray-100"
+                    aria-label="Delete transcript"
+                  >
+                    <FaTrash />
+                  </button>
+                </button>
               </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  deleteTranscript(transcript.id);
-                }}
-                className="text-gray-400 hover:text-red-600 bg-gray-50 rounded-md p-3 hover:bg-gray-100"
-              >
-                <FaTrash />
-              </button>
-            </li>
+            </div>
           ))}
         </ul>
       )}
