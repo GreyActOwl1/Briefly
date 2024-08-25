@@ -1,9 +1,8 @@
 'use client';
-import React from 'react';
+
 import { useEffect, useState } from 'react';
 import { supabase } from '@/config/supabaseClient';
 import ReactMarkdown from 'react-markdown';
-import MicModal from '@/components/MicModal';
 
 interface Annotation {
   id: string;
@@ -26,8 +25,6 @@ export default function TranscriptPage({ params }: { params: { transcriptId: str
   const [transcript, setTranscript] = useState<Transcript | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalTranscript, setModalTranscript] = useState("");
 
   useEffect(() => {
     const fetchTranscriptData = async () => {
@@ -41,7 +38,7 @@ export default function TranscriptPage({ params }: { params: { transcriptId: str
         if (error) throw error;
         setTranscript(data as Transcript);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred: ' + err);
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
       } finally {
         setIsLoading(false);
       }
@@ -49,15 +46,6 @@ export default function TranscriptPage({ params }: { params: { transcriptId: str
 
     fetchTranscriptData();
   }, [transcriptId]);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = (transcribedText: string) => {
-    setModalTranscript(transcribedText);
-    setIsModalOpen(false);
-  };
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -74,25 +62,6 @@ export default function TranscriptPage({ params }: { params: { transcriptId: str
           <p><ReactMarkdown>{annotation.content}</ReactMarkdown></p>
         </div>
       ))}
-
-      <button
-        onClick={handleOpenModal}
-        className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded"
-      >
-        Open Microphone
-      </button>
-
-      <MicModal isOpen={isModalOpen} onClose={handleCloseModal} />
-
-      {modalTranscript && (
-        <div className="mt-4">
-          <textarea
-            className="w-full h-32 p-2 border rounded-md"
-            value={modalTranscript}
-            readOnly
-          />
-        </div>
-      )}
     </div>
   );
 }
