@@ -52,7 +52,7 @@ export const Navbar = () => {
                     {!open && (
                       <path
                         fillRule="evenodd"
-                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                       />
                     )}
                   </svg>
@@ -65,7 +65,7 @@ export const Navbar = () => {
                         {item}
                       </Link>
                     ))}
-                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">
+                    <Link href="/waitlist" target="_blank" rel="noreferrer" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                       Get Started
                     </Link>
                   </>
@@ -89,7 +89,7 @@ export const Navbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <Link href="/" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
+          <Link href="/waitlist" target="_blank" rel="noreferrer" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
             Get Started
           </Link>
 
