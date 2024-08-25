@@ -24,9 +24,7 @@ export default function Home() {
     <Container>
       <Hero />
       <SectionTitle preTitle="Our Benefits" title=" Why Briefly?">
-        Briefly transforms the way professionals capture and manage their notes
-        and voice recordings. Designed for ease of use and maximum productivity,
-        it simplifies communication, making every interaction count.
+      Briefly is designed to transform how sales teams interact with their notes and voice recordings. It’s built for simplicity and peak productivity, enabling you to focus on what truly matters—effective communication and actionable insights.
       </SectionTitle>
 
       <Benefits data={benefitOne} />
