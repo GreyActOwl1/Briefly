@@ -14,6 +14,7 @@ import {
   CircleAlert,
   BicepsFlexed,
   Check,
+  Eye,
 } from "lucide-react"
 
 import {
@@ -45,6 +46,9 @@ export default function Dashboard() {
   const router = useRouter();
   return (
     <div className="flex min-h-screen w-full flex-col">
+
+
+
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           <Card x-chunk="dashboard-01-chunk-0">
@@ -93,7 +97,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-green-500">+573</div>
-              
+
             </CardContent>
           </Card>
         </div>
@@ -109,7 +113,7 @@ export default function Dashboard() {
                 </CardDescription>
               </div>
               <Button asChild size="sm" className="ml-auto gap-1">
-                <Link href="transcripts">
+                <Link href="https://briefly-6z1728acg-dev-18s-projects.vercel.app/transcripts">
                   View All
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
@@ -121,10 +125,11 @@ export default function Dashboard() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Transcript</TableHead>
-                    <TableHead className=" xl:table-column">
+                    <TableHead className=" ">
                       Customer Name
                     </TableHead>
-                    <TableHead className="text-right">Status</TableHead>
+                    <TableHead className="">Status</TableHead>
+                    <TableHead className="t"></TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -135,14 +140,24 @@ export default function Dashboard() {
                         LJ001
                       </div>
                     </TableCell>
-                    <TableCell className=" xl:table-column">
-                    James Cooper
+                    <TableCell className=" ">
+                      James Cooper
                     </TableCell>
-                    <TableCell className=" xl:table-column">
+                    <TableCell className=" ">
                       <Badge className="text-xs text-green-500" variant="outline">
                         Analyzed
                       </Badge>
                     </TableCell>
+
+                    <TableCell>
+                      <Button asChild size="sm" className="ml-auto gap-1">
+                        <Link href="/dashboard/scripts">
+                          View 
+                          <Eye className="h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </TableCell>
+
                   </TableRow>
 
 
@@ -150,13 +165,13 @@ export default function Dashboard() {
                     <TableCell>
                       <div className="font-medium">Olivia Smith</div>
                       <div className="hidden text-sm text-muted-foreground md:inline">
-                       OS121
+                        OS121
                       </div>
                     </TableCell>
-                    <TableCell className=" xl:table-column">
-                    Mia Henderson
+                    <TableCell className=" ">
+                      Mia Henderson
                     </TableCell>
-                    <TableCell className=" xl:table-column">
+                    <TableCell className=" ">
                       <Badge className="text-xs text-green-500" variant="outline">
                         Analyzed
                       </Badge>
@@ -171,10 +186,10 @@ export default function Dashboard() {
                         NW900
                       </div>
                     </TableCell>
-                    <TableCell className=" xl:table-column">
-                    Lucas Morgan
+                    <TableCell className=" ">
+                      Lucas Morgan
                     </TableCell>
-                    <TableCell className=" xl:table-column">
+                    <TableCell className=" ">
                       <Badge className="text-xs text-red-500" variant="outline">
                         Unanalyzed
                       </Badge>
@@ -189,10 +204,10 @@ export default function Dashboard() {
                         EB789
                       </div>
                     </TableCell>
-                    <TableCell className=" xl:table-column">
-                    Isabella Fisher
+                    <TableCell className=" ">
+                      Isabella Fisher
                     </TableCell>
-                    <TableCell className=" xl:table-column">
+                    <TableCell className=" ">
                       <Badge className="text-xs text-red-500" variant="outline">
                         Unanalyzed
                       </Badge>
@@ -206,10 +221,10 @@ export default function Dashboard() {
                         liam@example.com
                       </div>
                     </TableCell>
-                    <TableCell className=" xl:table-column">
-                    Jackson Reed
+                    <TableCell className=" ">
+                      Jackson Reed
                     </TableCell>
-                    <TableCell className=" xl:table-column">
+                    <TableCell className=" ">
                       <Badge className="text-xs text-green-500" variant="outline">
                         Analyzed
                       </Badge>

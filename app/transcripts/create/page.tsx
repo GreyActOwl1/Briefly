@@ -44,7 +44,7 @@ export default function TranscriptsPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Transcripts</h1>
       <div className="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">Create New Transcript</h2>
+        <h2 className="text-2xl font-semibold mb-4  dark:text-gray-950">Create New Transcript</h2>
         <form onSubmit={handleCreateTranscript} className="space-y-4">
           <div>
             <label
@@ -60,7 +60,7 @@ export default function TranscriptsPage() {
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="mt-1 p-2 pl-4 text-start border block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
           <div>
@@ -77,7 +77,7 @@ export default function TranscriptsPage() {
               onChange={(e) => setNewContent(e.target.value)}
               required
               rows={4}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="mt-1 block w-full pl-4 p-2 border border-gray-300 rounded-md  shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
           <button

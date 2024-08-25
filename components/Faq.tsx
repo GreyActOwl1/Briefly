@@ -8,12 +8,12 @@ export const Faq = () => {
   return (
     <Container className="!p-0">
       <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
-        {faqdata.map((item) => (
+        {faqdata.map((item, index) => (
           <div key={item.question} className="mb-5">
             <Disclosure>
-              {({ open }: { open: boolean }) => (
+            {({ open }: { open: boolean }) => (
                 <>
-                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-black rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-black">
+                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-gray-200">
                     <span>{item.question}</span>
                     <ChevronUpIcon
                       className={`${
@@ -21,7 +21,7 @@ export const Faq = () => {
                       } w-5 h-5 text-indigo-500`}
                     />
                   </DisclosureButton>
-                  <DisclosurePanel className="px-4 pt-4 pb-2 text-black dark:text-white">
+                  <DisclosurePanel className="px-4 pt-4 pb-2 text-gray-500 dark:text-gray-300">
                     {item.answer}
                   </DisclosurePanel>
                 </>
@@ -45,17 +45,11 @@ const faqdata = [
   },
   {
     question: "Does Briefly offer automatic transcription or summarization?",
-    answer:
-      "Absolutely! Briefly provides automatic transcription and summarization features. This means you can quickly generate text versions of your voice recordings and get concise summaries of key points, saving you time and effort.",
+    answer: "Absolutely! Briefly provides automatic transcription and summarization features. This means you can quickly generate text versions of your voice recordings and get concise summaries of key points, saving you time and effort.",
   },
   {
     question: "Is my data secure on Briefly?",
-    answer:
-      "We take security very seriously at Briefly. All your notes, recordings, and personal data are encrypted and stored securely. We follow industry best practices to ensure your information is always protected.",
+    answer: "We take security very seriously at Briefly. All your notes, recordings, and personal data are encrypted and stored securely. We follow industry best practices to ensure your information is always protected.",
   },
 ];
-
-
-
-
 
