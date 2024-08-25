@@ -87,6 +87,7 @@ export default function TranscriptPage({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTranscript, setModalTranscript] = useState("");
   const [comments, setComments] = useState("");
+  const [commentsArray, setCommentsArray] = useState<string[]>([]);
   const [isCommentsEditable, setIsCommentsEditable] = useState(false);
 
   useEffect(() => {
@@ -106,6 +107,7 @@ export default function TranscriptPage({
       setTranscript(data as Transcript);
       setEditedTitle(data.title);
       setEditedContent(data.content);
+      setCommentsArray(data.annotations.map((annotation: Annotation) => annotation.content));
       setComments(data.annotations.map((annotation: Annotation) => annotation.content).join("\n"));
     } catch (err) {
       setError(
@@ -213,7 +215,7 @@ export default function TranscriptPage({
         />
       ) : (
         <ReactMarkdown>
-          {comments}
+          {commentsArray.map((comment) => `- ${comment}`).join("\n")}
         </ReactMarkdown>
       )}
       {isCommentsEditable && (
