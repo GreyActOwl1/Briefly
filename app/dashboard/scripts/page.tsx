@@ -78,7 +78,7 @@ import {
 
 import {scriptt} from "../../../lib/data"
 
-export default function scripts() {
+export default function Scripts() {
 
   //store the script
 const [textValue, setTextValue] = useState('' || scriptt);
