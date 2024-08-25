@@ -39,13 +39,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
+  const router = useRouter();
   return (
     <div className="flex min-h-screen w-full flex-col">
-     
-      
-      
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           <Card x-chunk="dashboard-01-chunk-0">
@@ -110,14 +109,15 @@ export default function Dashboard() {
                 </CardDescription>
               </div>
               <Button asChild size="sm" className="ml-auto gap-1">
-                <Link href="/dashboard/scripts">
+                <Link href="transcripts">
                   View All
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </Button>
             </CardHeader>
             <CardContent>
-              <Table>
+              <Table role="Button"
+               onClick={() => router.push('/dashboard/scripts')} className="cursor-pointer">
                 <TableHeader>
                   <TableRow>
                     <TableHead>Transcript</TableHead>
