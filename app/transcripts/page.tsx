@@ -17,7 +17,8 @@ export default function TranscriptsPage() {
   const [transcripts, setTranscripts] = useState<Transcript[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
+  const [newTitle, setNewTitle] = useState("");
+  const [newContent, setNewContent] = useState("");
 
   useEffect(() => {
     fetchTranscripts();
@@ -30,16 +31,11 @@ export default function TranscriptsPage() {
         .select("id, title, created_at")
         .order("created_at", { ascending: false });
 
-      console.log(error);
-
-      if (data) {
-        setTranscripts(data as Transcript[]);
-      } else {
-        setTranscripts([]);
-      }
+      if (error) throw error;
+      setTranscripts(data);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "An unknown error occurred: " + err
+        err instanceof Error ? err.message : "An unknown error occurred"
       );
     } finally {
       setIsLoading(false);
@@ -78,6 +74,8 @@ export default function TranscriptsPage() {
           <FaPlus />
         </button>
       </div>
+
+      <h2 className="text-2xl font-semibold mb-4">All Transcripts</h2>
       {isLoading ? (
         <p>Loading transcripts...</p>
       ) : error ? (
