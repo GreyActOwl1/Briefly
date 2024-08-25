@@ -3,8 +3,12 @@ import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
 import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
+import { LoginLink, LogoutLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 
-export const Navbar = () => {
+export const Navbar =({user}:{user:KindeUser | null}) => {
+ 
+
   const navigation = [
     "Product",
     "Features",
@@ -64,19 +68,21 @@ export const Navbar = () => {
                       <Link key={index} href={`/#${item}`} className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                         {item}
                       </Link>
-                    ))}
-                    <Link href="/waitlist" target="_blank" rel="noreferrer" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
-                      Get Started
-                    </Link>
+                    ))};
+                   {
+               !user ? (<div className='flex gap-x-8'>
+               <RegisterLink  className="px-6 py-2 text-white bg-indigo-600 rounded-md">Sign Up</RegisterLink>
+               <LoginLink   className="px-6 py-2 text-white bg-indigo-600 rounded-md">Log In </LoginLink>
+               </div>) : (<LogoutLink className="px-16 py-2 text-white bg-indigo-600 rounded-md lg:ml-5"> Log out</LogoutLink>)
+            }
                   </>
                 </Disclosure.Panel>
               </div>
             </>
           )}
         </Disclosure>
-
-        {/* menu */}
-        <div className="hidden text-center lg:flex lg:items-center">
+        {/* menu  */}
+        <div className="hidden text-center mr-3 lg:flex lg:items-center">
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
@@ -87,12 +93,13 @@ export const Navbar = () => {
             ))}
           </ul>
         </div>
-
-        <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <Link href="/waitlist" target="_blank" rel="noreferrer" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-            Get Started
-          </Link>
-
+        <div className="hidden text-center gap-x-6 lg:flex  ">
+        {
+               !user ? (<div className='flex gap-x-8'>
+               <RegisterLink  className="px-4 py-1.5 text-white bg-indigo-600 hover:bg-indigo-500 rounded-md">Sign Up</RegisterLink>
+               <LoginLink   className="px-4 py-1.5 text-white bg-indigo-600 hover:bg-indigo-500 rounded-md">Log In </LoginLink>
+               </div>) : (<LogoutLink   className="px-12 py-2 text-white bg-indigo-600 hover:bg-indigo-500 rounded-md md:ml-5"> Log out</LogoutLink>)
+            }
           <ThemeChanger />
         </div>
       </nav>
