@@ -4,7 +4,6 @@ import { supabase } from "@/config/supabaseClient";
 import ReactMarkdown from "react-markdown";
 import MicModal from "@/components/MicModal";
 
-
 interface EditableTextProps {
   isEditing: boolean;
   value: string;
@@ -40,6 +39,7 @@ const EditableText = ({
     <p>{value}</p>
   );
 };
+
 interface EditButtonProps {
   isEditing: boolean;
   onClick: () => void;
@@ -55,7 +55,6 @@ const EditButton = ({ isEditing, onClick }: EditButtonProps) => {
     </button>
   );
 };
-
 
 interface Annotation {
   id: string;
@@ -87,6 +86,7 @@ export default function TranscriptPage({
   const [error, setError] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTranscript, setModalTranscript] = useState("");
+  const [comments, setComments] = useState("");
 
   useEffect(() => {
     fetchTranscriptData();
@@ -105,6 +105,7 @@ export default function TranscriptPage({
       setTranscript(data as Transcript);
       setEditedTitle(data.title);
       setEditedContent(data.content);
+      setComments(data.annotations.map((annotation: Annotation) => annotation.content).join("\n"));
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "An unknown error occurred: " + err
@@ -135,12 +136,44 @@ export default function TranscriptPage({
     }
   };
 
+  const upsertAnnotation = async (content: string) => {
+    try {
+      setIsLoading(true);
+
+      const { error: deleteError } = await supabase
+        .from("annotations")
+        .delete()
+        .eq("transcript_id", transcriptId);
+
+      if (deleteError) throw deleteError;
+
+      const annotations = content.split("\n").map((line) => ({
+        transcript_id: transcriptId,
+        content: line,
+      }));
+
+      const { error: insertError } = await supabase
+        .from("annotations")
+        .insert(annotations);
+
+      if (insertError) throw insertError;
+
+      fetchTranscriptData();
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "An unknown error occurred"
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
   const handleCloseModal = (transcribedText: string) => {
-    setModalTranscript(transcribedText);
+    setComments((prevComments) => prevComments + "\n" + transcribedText);
     setIsModalOpen(false);
   };
 
@@ -168,14 +201,18 @@ export default function TranscriptPage({
         type="textarea"
       />
       <h2>Comments:</h2>
-      {transcript.annotations.map((annotation) => (
-        <div key={annotation.id}>
-          <p>
-            <ReactMarkdown>{annotation.content}</ReactMarkdown>
-          </p>
-        </div>
-      ))}
-
+      <textarea
+        className="w-full p-4 border rounded-md"
+        rows={10}
+        value={comments}
+        onChange={(e) => setComments(e.target.value)}
+      />
+      <button
+        onClick={() => upsertAnnotation(comments)}
+        className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded mr-4"
+      >
+        Save Comments
+      </button>
       <button
         onClick={handleOpenModal}
         className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded"
@@ -184,16 +221,6 @@ export default function TranscriptPage({
       </button>
 
       <MicModal isOpen={isModalOpen} onClose={handleCloseModal} />
-
-      {modalTranscript && (
-        <div className="mt-4">
-          <textarea
-            className="w-full h-32 p-2 border rounded-md"
-            value={modalTranscript}
-            readOnly
-          />
-        </div>
-      )}
     </div>
   );
 }

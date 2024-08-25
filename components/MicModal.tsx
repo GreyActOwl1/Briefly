@@ -16,7 +16,7 @@ export default function MicModal({ isOpen, onClose }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg p-4 w-full max-w-md">
         <MicrophoneComponent setTranscript={setTranscript} />
         <button
