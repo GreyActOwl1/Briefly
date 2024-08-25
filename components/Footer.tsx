@@ -4,7 +4,12 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 export function Footer() {
-  const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
+  const navigation = [
+    "Product",
+    "Features",
+    "Testimonials",
+    "FAQ",
+  ];
   const legal = ["Terms", "Privacy", "Legal"];
   return (
     <div className="relative">
@@ -29,9 +34,7 @@ export function Footer() {
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              Nextly is a free landing page & marketing website template for
-              startups and indie projects. Its built with Next.js & TailwindCSS.
-              And its completely open-source.
+              Briefly is a feature made to allow sales managers to add, edit, and delete comments on specific parts of a sales transcript.
             </div>
           </div>
 
@@ -40,7 +43,7 @@ export function Footer() {
               {navigation.map((item, index) => (
                 <Link
                   key={index}
-                  href="/"
+                  href={`/#${item}`}
                   className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
                 >
                   {item}
@@ -97,18 +100,16 @@ export function Footer() {
         </div>
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
-          Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
+          Copyright © {new Date().getFullYear()} {" "}
           <a href="https://web3templates.com/" target="_blank" rel="noreferrer">
-            Web3Templates.
+          
           </a>{" "}
-          Illustrations from{" "}
+          {" "}
           <a href="https://www.glazestock.com/" target="_blank" rel="noreferrer">
-            Glazestock
+            
           </a>
         </div>
       </Container>
-      {/* Do not remove this */}
-      <Backlink />
     </div>
   );
 }
@@ -150,7 +151,7 @@ const Instagram = ({ size = 24 }) => (
 
 const Linkedin = ({ size = 24 }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="https://linkedin.com/in/naitikoza"
     width={size}
     height={size}
     viewBox="0 0 24 24"
@@ -183,7 +184,7 @@ const Backlink = () => {
         />
       </svg>
 
-      <span>Web3Templates</span>
+      <span>Briefly</span>
     </a>
   );
 };

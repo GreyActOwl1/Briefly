@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/config/supabaseClient";
 import ReactMarkdown from "react-markdown";
+import MicModal from "@/components/MicModal";
 
 
 interface EditableTextProps {
@@ -84,6 +85,8 @@ export default function TranscriptPage({
   const [editedTitle, setEditedTitle] = useState("");
   const [editedContent, setEditedContent] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTranscript, setModalTranscript] = useState("");
 
   useEffect(() => {
     fetchTranscriptData();
@@ -132,12 +135,21 @@ export default function TranscriptPage({
     }
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = (transcribedText: string) => {
+    setModalTranscript(transcribedText);
+    setIsModalOpen(false);
+  };
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!transcript) return <p>No transcript found</p>;
 
   return (
-    <div>
+    <div className='mt-5'>
       <div className="flex justify-between items-center">
         <EditableText
           isEditing={isEditing}
@@ -163,6 +175,25 @@ export default function TranscriptPage({
           </p>
         </div>
       ))}
+
+      <button
+        onClick={handleOpenModal}
+        className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded"
+      >
+        Open Microphone
+      </button>
+
+      <MicModal isOpen={isModalOpen} onClose={handleCloseModal} />
+
+      {modalTranscript && (
+        <div className="mt-4">
+          <textarea
+            className="w-full h-32 p-2 border rounded-md"
+            value={modalTranscript}
+            readOnly
+          />
+        </div>
+      )}
     </div>
   );
 }
